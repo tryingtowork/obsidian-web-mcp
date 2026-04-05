@@ -1,0 +1,15 @@
+services:
+  obsidian-mcp:
+    build: .
+    ports:
+      - "8420:8420"
+    volumes:
+      - type: bind
+        source: ${VAULT_PATH}
+        target: /vault
+    env_file:
+      - .env
+    environment:
+      - VAULT_PATH=/vault
+    restart: unless-stopped
+    
